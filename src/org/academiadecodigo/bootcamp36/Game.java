@@ -2,33 +2,29 @@ package org.academiadecodigo.bootcamp36;
 
 public class Game {
 
-    private Player player1;
-    private static final int MAX_NUMBER = 20;
+    private Player[] players;
     private int pick;
+
+    // Constants
+    private static final int MAX_NUMBER = 20;
+    private static final int NUMBER_PLAYERS = 2;
 
     public static int getMaxNumber() {
         return MAX_NUMBER;
     }
 
-    public void setPlayer1(Player player1) {
-        this.player1 = player1;
+    public void setupPlayers(Player[] players) {
+        this.players = players;
     }
 
     public void run() {
 
-        int player1Pick;
-
-        // Generate own number pick
-        this.pick = Randomizer.getRandom(MAX_NUMBER);
-
-        // ask player 1 to pick a number
-        player1Pick = player1.choose();
-        while(this.pick != player1Pick) {
-            player1Pick = player1.choose();
-            System.out.println("Player " + player1.getName() + " picked " + player1Pick + "and guessed wrong.");
+        int[] playersPicks = new int[MAX_NUMBER];
+        pick = Randomizer.getRandom(MAX_NUMBER);
+        for (int i = 0; i < NUMBER_PLAYERS; i++) {
+            players[i].choose();
         }
 
-        System.out.println("Player " + player1.getName() + " guessed right. My pick was " + this.pick);
-    }
 
+    }
 }
