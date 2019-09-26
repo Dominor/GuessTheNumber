@@ -3,7 +3,7 @@ package org.academiadecodigo.bootcamp36;
 public class Game {
 
     private Player player1;
-    private static final int MAX_NUMBER = 50;
+    private static final int MAX_NUMBER = 20;
     private int pick;
 
     public static int getMaxNumber() {
@@ -22,12 +22,13 @@ public class Game {
         this.pick = Randomizer.getRandom(MAX_NUMBER);
 
         // ask player 1 to pick a number
-        do {
-            player1Pick = this.player1.choose();
-            System.out.println("Player 1 picked " + player1Pick);
-        } while(this.pick != player1Pick);
+        player1Pick = player1.choose();
+        while(this.pick != player1Pick) {
+            player1Pick = player1.choose();
+            System.out.println("Player " + player1.getName() + " picked " + player1Pick + "and guessed wrong.");
+        }
 
-        System.out.println("Player " + player1.getName() + " won!");
+        System.out.println("Player " + player1.getName() + " guessed right. My pick was " + this.pick);
     }
 
 }
