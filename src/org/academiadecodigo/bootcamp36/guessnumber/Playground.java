@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp36;
+package org.academiadecodigo.bootcamp36.guessnumber;
 
 public class Playground {
 
